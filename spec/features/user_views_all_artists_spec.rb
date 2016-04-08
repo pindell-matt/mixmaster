@@ -14,5 +14,4 @@ RSpec.feature "User views all artists" do
     expect(page).to have_content "Beyonce"
   end
 
-
 end
