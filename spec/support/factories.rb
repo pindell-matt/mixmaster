@@ -8,7 +8,7 @@ FactoryGirl.define do
     "#{n} Artist"
   end
 
-  sequence :title, ["A", "B", "C"].cycle do |n|
+  sequence :title, ["A", "C", "B"].cycle do |n|
     "#{n} Title"
   end
 
@@ -17,4 +17,15 @@ FactoryGirl.define do
     artist
   end
 
+  sequence :playlist_name do |n|
+    "Playlist #{n}"
+  end
+
+  factory :playlist do
+    name { generate(:playlist_name) }
+
+    factory :playlist_with_songs do
+      songs { create_list(:song, 3) }
+    end
+  end
 end

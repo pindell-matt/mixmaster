@@ -1,5 +1,7 @@
 <h1>All Artists</h1>
 
+<%= link_to "New artist", new_artist_path %>
+
 <div class="artists-index">
   <ul>
     <% @artists.each do |artist| %>
@@ -7,5 +9,3 @@
     <% end %>
   </ul>
 </div>
-
-<%= link_to "New artist", new_artist_path %>
