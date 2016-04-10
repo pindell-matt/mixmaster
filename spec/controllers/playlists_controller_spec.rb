@@ -20,5 +20,23 @@ RSpec.describe PlaylistsController, type: :controller do
         expect(response).to redirect_to(Playlist.last)
       end
     end
+
+    context "with invalid params" do
+      it "assigns a newly created but unsaved playlist as @playlist" do
+        post :create, {playlist: attributes_for(:playlist, name: nil)}
+        expect(assigns(:playlist)).to be_a_new(Playlist)
+      end
+
+      it "re-renders the 'new' template" do
+        post :create, {playlist: attributes_for(:playlist, name: nil)}
+        expect(response).to render_template("new")
+      end
+    end
+  end
+
+  describe "PUT #update" do
+    context "with valid params" do
+      
+    end
   end
 end
