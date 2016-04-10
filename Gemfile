@@ -34,6 +34,10 @@ gem 'database_cleaner'
 # Use Rails 12factor error logging for deployment to Heroku
 gem 'rails_12factor', group: :production
 
+# Use OmniAuth
+gem 'omniauth-oauth2'
+
+gem 'figaro'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
