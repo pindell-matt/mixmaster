@@ -42,6 +42,18 @@ RSpec.describe PlaylistsController, type: :controller do
         playlist.reload
         expect(playlist.name).to eq("New playlist name")
       end
+
+      it "assigns the requested playlist as @playlist" do
+        playlist = create(:playlist)
+        put :update, {id: playlist.to_param, playlist: attributes_for(:playlist, name: "New playlist name")}
+        expect(assigns(:playlist)).to eq(playlist)
+      end
+
+      it "redirects to the playlist" do
+        playlist = create(:playlist)
+        put :update, {id: playlist.to_param, playlist: attributes_for(:playlist, name: "New playlist name")}
+        expect(response).to redirect_to(playlist)
+      end
     end
   end
 end
