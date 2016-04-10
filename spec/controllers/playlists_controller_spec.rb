@@ -55,5 +55,19 @@ RSpec.describe PlaylistsController, type: :controller do
         expect(response).to redirect_to(playlist)
       end
     end
+
+    context "with invalid params" do
+      it "assigns the playlist as @playlist" do
+        playlist = create(:playlist)
+        put :update, {id: playlist.to_param, playlist: attributes_for(:playlist, name: nil)}
+        expect(assigns(:playlist)).to eq(playlist)
+      end
+
+      it "re-renders the 'edit' template" do
+        playlist = create(:playlist)
+        put :update, {id: playlist.to_param, playlist: attributes_for(:playlist, name: nil)}
+        expect(response).to render_template("edit")
+      end
+    end
   end
 end
