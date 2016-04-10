@@ -36,7 +36,12 @@ RSpec.describe PlaylistsController, type: :controller do
 
   describe "PUT #update" do
     context "with valid params" do
-      
+      it "updates the requested playlist" do
+        playlist = create(:playlist)
+        put :update, {id: playlist.to_param, playlist: attributes_for(:playlist, name: "New playlist name")}
+        playlist.reload
+        expect(playlist.name).to eq("New playlist name")
+      end
     end
   end
 end
